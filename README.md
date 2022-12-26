@@ -9,7 +9,7 @@ erious Sam Classic JumpFUN was created by fans of the game Serious Sam Classic a
 
 ![JumpFUN](https://raw.githubusercontent.com/tx00100xt/SE1-TFE-JumpFUN/main/Images/jumpfun-1.png)
 
-![JumpFUN](https://raw.githubusercontent.com/tx00100xt/SE1-TFE-JumpFUN/main/Images/jumpfun-2png)
+![JumpFUN](https://raw.githubusercontent.com/tx00100xt/SE1-TFE-JumpFUN/main/Images/jumpfun-2.png)
 
 
 Download [SE1-TFE-JumpFUN.tar.xz] archive and unpack to  SeriousSamClassic/SamTFE/ directory.

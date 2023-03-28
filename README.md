@@ -1,4 +1,7 @@
 ## Serious Sam Classic JumpFUN
+![Build status](https://github.com/tx00100xt/SE1-TFE-JumpFUN/actions/workflows/cibuild.yml/badge.svg)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/tx00100xt/SE1-TFE-JumpFUN)
 
 What is JumpFUN?  
 This is a modification for Serious Sam Classic The First Encounter.  

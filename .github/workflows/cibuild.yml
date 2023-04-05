@@ -464,7 +464,7 @@ jobs:
             cmake SE1-TFE-JumpFUN/Sources -B SE1-TFE-JumpFUN/Sources/build-armv7l-xplus -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DCMAKE_C_FLAGS=-mbe32 -DCMAKE_CXX_FLAGS=-mbe32 -DUSE_I386_NASM_ASM=FALSE -DTFE=TRUE -DRPI4=TRIE
             make -C SE1-TFE-JumpFUN/Sources/build-armv7l ecc
             make -j4 -C SE1-TFE-JumpFUN/Sources/build-armv7l
-            cp -vfr SE1-TFE-JumpFUN/Sources/build-armv7l/Debug/*.so SE1-TFE-JumpFUN/x32/SamTFE/Mods/JumpFUNBin 
+            cp -vfr SE1-TFE-JumpFUN/Sources/build-armv7l/Debug/*.so SE1-TFE-JumpFUN/x32/SamTFE/Mods/JumpFUN/Bin 
             cp -vfr SE1-TFE-JumpFUN/Sources/Entities/PlayerWeaponsHD.es SE1-TFE-JumpFUN/Sources/Entities/PlayerWeapons.es
             make -C SE1-TFE-JumpFUN/Sources/build-armv7l-xplus ecc
             make -j4 -C SE1-TFE-JumpFUN/Sources/build-armv7l-xplus

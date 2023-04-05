@@ -529,11 +529,11 @@ jobs:
             cmake SE1-TFE-JumpFUN/Sources -B SE1-TFE-JumpFUN/Sources/build-aarch64-xplus -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }} -DTFE=TRUE -DRPI4=TRIE
             make -C SE1-TFE-JumpFUN/Sources/build-aarch64 ecc
             make -j4 -C SE1-TFE-JumpFUN/Sources/build-aarch64
-            cp -vfr SE1-TFE-JumpFUN/Sources/build-aarch64/Debug/*.so SE1-TFE-JumpFUN/x64/SamTFE/JumpFUN/Bin 
+            cp -vfr SE1-TFE-JumpFUN/Sources/build-aarch64/Debug/*.so SE1-TFE-JumpFUN/x64/SamTFE/Mods/JumpFUN/Bin 
             cp -vfr SE1-TFE-JumpFUN/Sources/Entities/PlayerWeaponsHD.es SE1-TFE-JumpFUN/Sources/Entities/PlayerWeapons.es
             make -C SE1-TFE-JumpFUN/Sources/build-aarch64-xplus ecc
             make -j4 -C SE1-TFE-JumpFUN/Sources/build-aarch64-xplus
-            cp -vfr SE1-TFE-JumpFUN/Sources/build-aarch64-xplus/Debug/*.so SE1-TFE-JumpFUN/x64/SamTFE/JumpFUNHD/Bin           
+            cp -vfr SE1-TFE-JumpFUN/Sources/build-aarch64-xplus/Debug/*.so SE1-TFE-JumpFUN/x64/SamTFE/Mods/JumpFUNHD/Bin           
             mv SE1-TFE-JumpFUN/x64 aarch64
             XZ_DEFAULTS="-T 10" tar --use-compress-program=xz -cpvf SamTFE-JumpFUN-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz aarch64
             cp SamTFE-JumpFUN-${{ steps.date.outputs.time }}-rpios-aarch64-bin.tar.xz Release/

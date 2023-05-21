@@ -16,6 +16,10 @@ erious Sam Classic JumpFUN was created by fans of the game Serious Sam Classic a
 
 
 Download [SE1-TFE-JumpFUN.tar.xz] archive and unpack to  SeriousSamClassic/SamTFE/ directory.
+You can also download the archive using curl or wget:
+```
+wget https://archive.org/download/sam-tfe-jump-fun/SE1-TFE-JumpFUN.tar.xz
+```
 To start the modification, use the game menu - item Modification.
 
 Building Serious Sam Classic Parse Error modification (for SS:TFE)

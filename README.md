@@ -22,29 +22,20 @@ wget https://archive.org/download/sam-tfe-jump-fun/SE1-TFE-JumpFUN.tar.xz
 ```
 To start the modification, use the game menu - item Modification.
 
-Building Serious Sam Classic Parse Error modification (for SS:TFE)
-------------------------------------------------------------------
+Building Serious Sam Classic JumpFUN modification (for SS:TFE)
+--------------------------------------------------------------
 
 ### Linux
 
 Type this in your terminal:
 
 ```
-git clone https://github.com/tx00100xt/SE1-SE1-TFE-JumpFUN.git
+git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
 cd SE1-TFE-JumpFUN/Sources
-./build-linux64.sh -DTFE=TRUE              # use build-linux32.sh for 32-bits
-./build-linux64xplus.sh -DTFE=TRUE         # use build-linux32xplus.sh for 32-bits
+./build-linux64.sh               # use build-linux32.sh for 32-bits
 ```
-After that , libraries will be collected in the x32 or x64 directory . 
+After that , libraries will be collected in the Mods and (x32 or x64) directory.  
 Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
-
-### Gentoo
-
-To build a game for gentoo, use a https://github.com/tx00100xt/serioussam-overlay containing ready-made ebuilds for building the game and add-ons.
-
-### Arch Linux
-
-To build a game under Arch Linux you can use the package from AUR: https://aur.archlinux.org/packages/serioussam
 
 ### Raspberry Pi
 
@@ -52,8 +43,7 @@ The build for raspberry pi is similar to the build for Linux, you just need to a
 
 ```
 cd SE1-TFE-JumpFUN/Sources
-./build-linux64.sh -DTFE=TRUE -DRPI4=TRUE             # use build-linux32.sh for 32-bits
-./build-linux64xplus.sh -DTFE=TRUE -DRPI4=TRUE        # use build-linux32xplus.sh for 32-bits
+./build-linux64.sh -DRPI4=TRUE             # use build-linux32.sh for 32-bits
 ```
 ### FreeBSD
 
@@ -63,10 +53,29 @@ Type this in your terminal:
 ```
 git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
 cd SE1-TFE-JumpFUN
-bash build-linux64.sh -DTFE=TRUE                     # use build-linux32.sh for 32-bits
-bash build-linux64xplus.sh -DTFE=TRUE                # use build-linux32xplus.sh for 32-bits
+bash build-linux64.sh                      # use build-linux32.sh for 32-bits
 ```
-After that , libraries will be collected in the x32 or x64 directory . 
+After that , libraries will be collected in the Mods and (x32 or x64) directory.  
+Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
+
+### macOS
+
+Type this in your terminal:
+
+```
+git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
+cd SE1-TFE-JumpFUN
+cd Sources
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make -j8 && make install
+mkdir build-xplus
+cd build-xplus 
+cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE ..
+make -j8 && make install
+```
+After that , libraries will be collected in Mods directory . 
 Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
 
 Windows
@@ -89,11 +98,12 @@ Supported OS
 * `FreeBSD`
 * `Windows`
 * `Raspberry PI OS`
+* `Raspberry macOS`
 
 ### Build status
 |CI|Platform|Compiler|Configurations|Platforms|Status|
 |---|---|---|---|---|---|
-|GitHub Actions|Windows, Ubuntu, FreeBSD, Alpine, Raspberry PI OS Lite|MSVC, GCC, Clang|Release|x86, x64, armv7l, aarch64|![GitHub Actions Build Status](https://github.com/tx00100xt/SE1-TFE-JumpFUN/actions/workflows/cibuild.yml/badge.svg)
+|GitHub Actions|Windows, Ubuntu, FreeBSD, Alpine, Raspberry PI OS Lite, macOS|MSVC, GCC, Clang|Release|x86, x64, armv7l, aarch64, riscv64, ppc64le, s390x|![GitHub Actions Build Status](https://github.com/tx00100xt/SE1-TFE-JumpFUN/actions/workflows/cibuild.yml/badge.svg)
 
 You can download a the automatically build based on the latest commit.  
 To do this, go to the [Actions tab], select the top workflows, and then Artifacts.

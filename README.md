@@ -34,8 +34,9 @@ git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
 cd SE1-TFE-JumpFUN/Sources
 ./build-linux64.sh               # use build-linux32.sh for 32-bits
 ```
-After that , libraries will be collected in the Mods and (x32 or x64) directory.  
-Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
+After that , libraries will be collected in the Mods and (x32 or x64) directory.   
+Copy them to:   
+SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
 
 ### Raspberry Pi
 
@@ -56,7 +57,8 @@ cd SE1-TFE-JumpFUN
 bash build-linux64.sh                      # use build-linux32.sh for 32-bits
 ```
 After that , libraries will be collected in the Mods and (x32 or x64) directory.  
-Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
+Copy them to:   
+SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
 
 ### macOS
 
@@ -75,8 +77,9 @@ cd build-xplus
 cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE ..
 make -j8 && make install
 ```
-After that , libraries will be collected in Mods directory . 
-Copy them to SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
+After that , libraries will be collected in Mods directory .  
+Copy them to:   
+SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
 
 Windows
 -------
@@ -98,7 +101,7 @@ Supported OS
 * `FreeBSD`
 * `Windows`
 * `Raspberry PI OS`
-* `Raspberry macOS`
+* `macOS`
 
 ### Build status
 |CI|Platform|Compiler|Configurations|Platforms|Status|

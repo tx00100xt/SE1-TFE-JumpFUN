@@ -14,31 +14,35 @@ echo "Will build with 'make -j$NCPU' ... please edit this script if incorrect."
 set -e
 set -x
 
-rm -rf cmake-build
+set -e
+set -x
 
-mkdir $_
-cd $_
-cp -vfr ../Entities/PlayerWeapons_old.es ../Entities/PlayerWeapons.es
+rm -rf build
+mkdir build
 
-#cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_FLAGS=-m32 -DCMAKE_CXX_FLAGS=-m32 ..
-#ninja
-
-# This is the eventual path for amd64.
-#cmake -DCMAKE_BUILD_TYPE=Debug ..
-
+RPI4="-DRPI4=TRUE"
+CMAKE_ADD="-DCMAKE_C_FLAGS=-m32 -DCMAKE_CXX_FLAGS=-m32 -DUSE_I386_NASM_ASM=TRUE"
 # Right now we force x86, though...
 # for old x86 distros use:
-# cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_C_FLAGS=-mmmx -DCMAKE_CXX_FLAGS=-mmmx -DUSE_I386_NASM_ASM=TRUE .. $1 $2
-if [ -n "$2" ]
-then
-cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DUSE_I386_NASM_ASM=FALSE .. $1 $2
-else
-cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_C_FLAGS=-m32 -DCMAKE_CXX_FLAGS=-m32 -DUSE_I386_NASM_ASM=TRUE .. $1
+# CMAKE_ADD="-DCMAKE_C_FLAGS=-mmmx -DCMAKE_CXX_FLAGS=-mmmx -DUSE_I386_NASM_ASM=TRUE"
+
+for var in "$1" "$2" "$3" "$4" "$5" "$6" "$7" "$8" "$9"; do 
+if [ "$var" == "$RPI4" ]; then
+  CMAKE_ADD="-DUSE_I386_NASM_ASM=FALSE"
 fi
+done;
 
-echo "ECC first"
-make ecc
-echo "Then the rest..."
-make -j$NCPU
+echo $CMAKE_ADD
+cmake -B build -DCMAKE_BUILD_TYPE=Release $CMAKE_ADD $1 $2 $3 $4 $5 $6 $7 $8 $9
+make -j$NCPU -C build
+make install -C build
+cp -vfr build/Debug/*.so ../x32/SamTFE/Mods/JumpFUN/Bin
 
-cp -vfr Debug/*.so ../../x32/SamTFE/Mods/JumpFUN/Bin
+rm -rf build-xplus
+mkdir build-xplus
+
+echo $CMAKE_ADD
+cmake -B build-xplus -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE $CMAKE_ADD $1 $2 $3 $4 $5 $6 $7 $8 $9
+make -j$NCPU -C build-xplus
+make install -C build-xplus
+cp -vfr build-xplus/Debug/*.so ../x32/SamTFE/Mods/JumpFUNHD/Bin

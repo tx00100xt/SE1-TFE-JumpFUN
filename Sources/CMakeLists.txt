@@ -104,7 +104,7 @@ if(MACOSX OR FREEBSD)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug CACHE STRING "None Debug Release RelWithDebInfo MinSizeRel" FORCE)
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "None Debug Release RelWithDebInfo MinSizeRel" FORCE)
 endif()
 SET(DEBUG FALSE)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -438,7 +438,7 @@ if (USE_TREMOR)
     add_definitions(-DUSE_TREMOR=1)
 endif()
 
-option(TFE "Compile a The First Encounter version" FALSE)
+option(TFE "Compile a The First Encounter version" TRUE)
 if (TFE)
  add_definitions(-DFIRST_ENCOUNTER=1)
  set(MP "")
@@ -446,6 +446,20 @@ else()
  set(MP "MP")
 endif()
 
+option(XPLUS "Compile a XPLUS modification" FALSE)
+if(XPLUS)
+    execute_process (
+        COMMAND bash -c "cp -fr ${CMAKE_SOURCE_DIR}/Entities${MP}/PlayerWeaponsHD.es ${CMAKE_SOURCE_DIR}/Entities${MP}/PlayerWeapons.es;"
+        OUTPUT_VARIABLE outVar
+    )
+    message(STATUS "Compile a XPLUS modification")
+else()
+    execute_process (
+        COMMAND bash -c "cp -fr ${CMAKE_SOURCE_DIR}/Entities${MP}/PlayerWeapons_old.es ${CMAKE_SOURCE_DIR}/Entities${MP}/PlayerWeapons.es;"
+        OUTPUT_VARIABLE outVar
+    )
+    message(STATUS "Compile a standard game")
+endif()
 
 # !!! FIXME: I currently force this, but you shouldn't _have_ to.
 option(USE_SINGLE_THREAD "Use Single Threaded version" FALSE)
@@ -892,26 +906,34 @@ endif()
 
 
 # RAKE! Install Section.
-if(LOCAL_INSTALL)
+if(LOCAL_INSTALL AND NOT XPLUS)
     if(DEBUG) # RAKE! Will this work with TFE?
         install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
-            LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Bin/Debug"
+            LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Mods/JumpFUN/Debug/Bin"
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
     else()
         install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
-            LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Bin"
+            LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Mods/JumpFUN/Bin"
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
     endif()
-else()
+elseif(LOCAL_INSTALL AND XPLUS)
     if(DEBUG) # RAKE! Will this work with TFE?
         install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
-            RUNTIME DESTINATION "${CMAKE_INSTALL_LIBDIR}/${INTERNAL_NAME}/Mods/JumpFUN/Debug"
+            RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}/Mods/JumpFUNHD/Debug/Bin"
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
     else()
         install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
+            LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}/Mods/JumpFUNHD/Bin"
+            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+    endif()
+elseif(NOT LOCAL_INSTALL AND NOT XPLUS)
+    install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
             LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/${INTERNAL_NAME}/Mods/JumpFUN"
             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
-    endif()
+elseif(NOT LOCAL_INSTALL AND XPLUS)
+    install(TARGETS ${GAMEMPLIB} ${ENTITIESMPLIB}
+            LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}/${INTERNAL_NAME}/Mods/JumpFUNHD"
+            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_WRITE GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
 endif()
 
 # end of CMakeLists.txt ...

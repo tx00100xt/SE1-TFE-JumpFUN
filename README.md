@@ -42,6 +42,7 @@ SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUN
 Instead of building you can install packages from ppa by adding ppa:tx00100xt/serioussam to your system's Software Sources.
 ```bash
 sudo add-apt-repository ppa:tx00100xt/serioussam
+sudo add-apt-repository ppa:tx00100xt/serioussam-mods
 sudo apt update
 ```
 This PPA can be added to your system manually by copying the lines below and adding them to your system's software sources.

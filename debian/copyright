@@ -3,14 +3,14 @@ Upstream-Name: serioussam-jumpfun
 Upstream-Contact: YOUR_NAME <YOUR_EMAIL>
 Source: https://github.com/tx00100xt/SE1-TFE-JumpFUN
 
-License:
-Serious Engine is licensed under the GNU GPL v2 (see LICENSE file).
-amp11lib is licensed under the GNU GPL v2 (see amp11lib/COPYING file).
-
-Some of the code included with the engine sources is not licensed under the GNU GPL v2:
-zlib (located in Sources/Engine/zlib) by Jean-loup Gailly and Mark Adler
-LightWave SDK (located in Sources/LWSkaExporter/SDK) by NewTek Inc.
-libogg/libvorbis (located in Sources/libogg and Sources/libvorbis) by Xiph.Org Foundation
+Files: *
+Copyright: 2002-2012 Croteam Ltd. 
+License: GPL-2
+ Serious Engine is licensed under the GNU GPL v2 (see LICENSE file).
+ .
+ Some of the code included with the engine sources is not licensed under the GNU GPL v2:
+ zlib (located in Sources/Engine/zlib) by Jean-loup Gailly and Mark Adler
+ .
 
 Files: debian/*
 Copyright: 2023 YOUR_NAME <YOUR_EMAIL>

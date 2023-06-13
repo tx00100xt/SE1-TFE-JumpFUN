@@ -53,7 +53,7 @@ Type this in your terminal:
 
 ```
 git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
-cd SE1-TFE-JumpFUN
+cd SE1-TFE-JumpFUN/Sources
 bash build-linux64.sh                      # use build-linux32.sh for 32-bits
 ```
 After that , libraries will be collected in the Mods and (x32 or x64) directory.  
@@ -66,8 +66,7 @@ Type this in your terminal:
 
 ```
 git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
-cd SE1-TFE-JumpFUN
-cd Sources
+cd SE1-TFE-JumpFUN/Sources
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release ..

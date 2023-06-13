@@ -34,9 +34,29 @@ git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
 cd SE1-TFE-JumpFUN/Sources
 ./build-linux64.sh               # use build-linux32.sh for 32-bits
 ```
-After that , libraries will be collected in the Mods and (x32 or x64) directory.   
+After that , libraries will be collected in the Mods directory.   
 Copy them to:   
 SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
+
+### Ubuntu
+Instead of building you can install packages from ppa by adding ppa:tx00100xt/serioussam to your system's Software Sources.
+```bash
+sudo add-apt-repository ppa:tx00100xt/serioussam
+sudo apt update
+```
+This PPA can be added to your system manually by copying the lines below and adding them to your system's software sources.
+```
+deb https://ppa.launchpadcontent.net/tx00100xt/serioussam/ubuntu YOUR_UBUNTU_VERSION_HERE main 
+deb-src https://ppa.launchpadcontent.net/tx00100xt/serioussam/ubuntu YOUR_UBUNTU_VERSION_HERE main 
+```
+After adding ppa, run the commands:
+```bash
+sudo apt install serioussamclassic serioussam-jumpfun
+```
+or
+```bash
+sudo apt install serioussamclassic-vk serioussam-jumpfun
+```
 
 ### Raspberry Pi
 
@@ -56,7 +76,7 @@ git clone https://github.com/tx00100xt/SE1-TFE-JumpFUN.git
 cd SE1-TFE-JumpFUN/Sources
 bash build-linux64.sh                      # use build-linux32.sh for 32-bits
 ```
-After that , libraries will be collected in the Mods and (x32 or x64) directory.  
+After that , libraries will be collected in the Mods directory.  
 Copy them to:   
 SeriousSamClassic/SamTFE/Mods/JumpFUN/Bin, SeriousSamClassic/SamTFE/Mods/JumpFUNHD/Bin folder.
 
